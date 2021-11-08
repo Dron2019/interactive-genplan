@@ -78,7 +78,7 @@ window.scene = scene;
 function render() {
     const delta = window.clock.getDelta();
     if (scene.mixer !== undefined) {
-        scene.mixer.update(delta);
+        scene.mixer.update(delta*0.1);
     }
     // console.log(Math.abs(Math.sin(clock.elapsedTime)) * 0.01);
     renderer.render( scene, camera );
