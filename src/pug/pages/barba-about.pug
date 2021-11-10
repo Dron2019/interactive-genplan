@@ -1,0 +1,43 @@
+
+extends ../layout/main
+block variable
+  -
+    var title_page = 'barba-about'
+    var id_page = 'id-page-barba-about'
+    var class_page = 'class-page-barba-about'
+    var breadcrumbsSubitem = [
+      {
+        label: 'About',
+        link: pagesLink[0].about
+      }
+    ]
+  
+block meta
+  title= title_page
+  meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+  script(defer src='./assets/scripts/vendors.bundle.js')
+  script(defer src='./assets/scripts/index.bundle.js')
+  script(defer src='./assets/scripts/libs.js')
+  script(defer src='./assets/scripts/index.js')
+  script(defer src='./assets/scripts/header.js')
+  script(defer src='./assets/scripts/barba-about.js')
+block content
+  hul
+    li 1RE
+    li 2RE
+    li 3RE
+    li 4RE
+    li 5RE
+    li 6RE
+    li 7RE
+    li 8RE
+    li 9RE
+    li 10RE
+block footer
+  include ../includes/footer.pug
+
+block header
+  include ../includes/header.pug

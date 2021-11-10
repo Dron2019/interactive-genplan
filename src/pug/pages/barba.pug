@@ -1,0 +1,30 @@
+
+extends ../layout/main
+block variable
+  -
+    var title_page = 'barba'
+    var id_page = 'id-page-barba'
+    var class_page = 'class-page-barba'
+    var breadcrumbsSubitem = [
+      {
+        label: 'About',
+        link: pagesLink[0].about
+      }
+    ]
+  
+block meta
+  title= title_page
+  meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+  script(defer src='./assets/scripts/barba.bundle.js')
+block content
+  h1 barba
+  a(href="index.html") Index
+  a(href="barba-about.html") about
+block footer
+  include ../includes/footer.pug
+
+block header
+  include ../includes/header.pug
