@@ -1,4 +1,7 @@
 import * as THREE from 'three';
+import gsap from 'gsap';
+
+global.gsap = gsap;
 import {ColladaLoader} from './loaders/ColladaLoader.js';
 
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
@@ -37,9 +40,9 @@ loader.load('./static/Animation.dae', (el) => {
     // console.log(scene.animations);
     let mesh = el.scene.children[0];
     const mixer = new THREE.AnimationMixer( mesh );
-    const clips = el.animations;
     el.animations.forEach(( clip ) => {
-        mixer.clipAction(clip).play();
+        // mixer.clipAction(clip).play();
+        mixer.clipAction(clip);
     });
 
     scene.mixer = mixer;
@@ -59,26 +62,14 @@ window.clock = new THREE.Clock();
 window.scene = scene;
 
 
-// const textureLoader = new THREE.TextureLoader();
-// textureLoader.load('./assets/images/flower-1.jpg', (el) => {
-//     console.log(el);
-//     const mat = new THREE.MeshBasicMaterial({
-//         map: el,
-//     });
-//     scene.children[1].material = el;
-//     scene.children[1].material.needsUpdate = true;
-
-//     console.log(scene.children[1]);
-// })
-
-
-
+let inpt = document.querySelector('[name="progress"]');
 
 
 function render() {
     const delta = window.clock.getDelta();
     if (scene.mixer !== undefined) {
         scene.mixer.update(delta*0.1);
+        // inpt.checked ?  : null;
     }
     // console.log(Math.abs(Math.sin(clock.elapsedTime)) * 0.01);
     renderer.render( scene, camera );
@@ -90,3 +81,5 @@ function animate() {
 }
 
 animate();
+
+// gsap.timeline().add(() => {scene.mixer._actions[0].time = 0; scene.mixer._actions[0].play().fadeIn();}).to(scene.mixer._actions[0], { time: 2.5 }).add(() => scene.mixer._actions[0].fadeOut())
