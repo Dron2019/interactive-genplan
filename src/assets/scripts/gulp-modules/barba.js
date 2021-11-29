@@ -1,5 +1,18 @@
 import barba from '@barba/core';
 import gsap from 'gsap';
+import ztext from '../modules/ztext/ztext';
+
+
+
+
+var ztxt = new ztext(".hero-text", {
+  depth: "30px",
+  layers: 15,
+  fade: true,
+  direction: "forwards",
+  event: "pointer",
+  eventRotation: "35deg"
+});
 barba.init({
     transitions: [{
         name: 'default-transition',

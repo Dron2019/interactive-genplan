@@ -3,17 +3,23 @@ import gsap from 'gsap';
 
 global.gsap = gsap;
 import {ColladaLoader} from './loaders/ColladaLoader.js';
-
+import {OBJLoader} from './loaders/ObjLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 // console.log(ColladaLoader);
 
 const loader = new ColladaLoader(  );
-
+const objLoader = new OBJLoader();
+objLoader.load('./static/123.obj', (root) => {
+    console.log(root.children, 'AAAAAAAAAAAAAAA');
+    // scene.add(root);
+    scene.add(root.children[0]);
+  });
+console.log(OBJLoader);
 
 
 
 const container = document.getElementById( 'container' );
-let camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.1, 2000 );
+let camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.1, 10000 );
     camera.position.set( 0, 0, 50 );
     // camera.lookAt( 0, 3, 0 );
 let scene = new THREE.Scene();
